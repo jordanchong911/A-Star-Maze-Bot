@@ -1,3 +1,5 @@
+package src;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -16,7 +18,9 @@ public class MazeInput {
     }
 
     public int[][] FileInput (String fileName) throws FileNotFoundException{
-        File file = new File("src\\" + fileName);
+        //           windows: src\\
+        //               mac: src/
+        File file = new File("src/" + fileName);
         Scanner scan = new Scanner(file);
 
         mazeSize = scan.nextInt();
