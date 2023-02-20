@@ -5,25 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MazeInput {
-    private String fileName;
-    private int mazeSize;
     private int[][] maze;
 
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public int[][] FileInput (String fileName) throws FileNotFoundException{
+    public void FileInput (String fileName) throws FileNotFoundException{
         //           windows: src\\
         //               mac: src/
         File file = new File("src/" + fileName);
         Scanner scan = new Scanner(file);
 
-        mazeSize = scan.nextInt();
+        int mazeSize = scan.nextInt();
         maze = new int[mazeSize][mazeSize];
         scan.nextLine();
 
@@ -45,7 +35,11 @@ public class MazeInput {
             }
         }
         scan.close();
+    }
 
+    public int[][] getMaze() {
         return maze;
     }
+ 
+
 }
