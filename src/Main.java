@@ -45,7 +45,7 @@ public class Main {
         // Up, down, left, right movement
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-        System.out.println("Possible moves from the position:");
+        System.out.println("Possible moves from the current position:");
 
         for(int[] direction : directions){
             int next_x = x1 + direction[0];
