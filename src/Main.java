@@ -51,7 +51,8 @@ public class Main {
             int next_x = x1 + direction[0];
             int next_y = y1 + direction[1];
 
-            if(next_x >= 0 && next_y < maze.length && next_y < maze[0].length)
+            if(next_x >= 0 && next_y < maze.length && next_y < maze[0].length
+                    && maze[next_x][next_y] != 1)
                 System.out.println("X = " + next_x + " Y = " + next_y);
         }
     }
