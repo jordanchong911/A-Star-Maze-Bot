@@ -1,6 +1,7 @@
 package src;
 
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -37,5 +38,6 @@ public class Main {
 
         System.out.println("Start: X = " + x1 + " Y = " + y1);
         System.out.println("End: X = " + x2 + " Y = " + y2);
+        System.out.println("Manhattan distance: " + (Math.abs(x1 - x2) + Math.abs(y1 - y2)));
     }
 }
