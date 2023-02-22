@@ -1,14 +1,13 @@
 package src;
 
-import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Type in the file name: ");
+        System.out.print("Type in the file name: ");
         Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
+        String fileName = scan.next();
         fileName = fileName + ".txt";
 
         MazeInput mazeInput = new MazeInput();
@@ -18,7 +17,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("File not found: " + e.getMessage());
         }
-        scan.close();
+        
 
         int maze[][] = mazeInput.getMaze();
         int x1 = -1, x2 = -1, y1 = -1, y2 = -1;
@@ -32,10 +31,10 @@ public class Main {
                     x2 = i;
                     y2 = j;
                 }
-                System.out.print(maze[i][j] + " ");
+                //System.out.print(maze[i][j] + " ");
             }
 
-            System.out.println();
+            //System.out.println();
         }
 
         System.out.println("Start: X = " + x1 + " Y = " + y1);
@@ -55,5 +54,30 @@ public class Main {
                     && maze[next_x][next_y] != 1)
                 System.out.println("X = " + next_x + " Y = " + next_y);
         }
+
+        /* TESTING CODE SA BOT MOVEMENT
+         * BUT THIS DOES IT ON A STRAIGHT LINE PA LANG HAHAH
+         */
+        do {
+            System.out.println("----------------------");
+            System.out.print("Type 1 to move: ");
+            int next = scan.nextInt();
+            System.out.println("----------------------");
+            if(next == 1){
+                x1++;
+            }
+            for (int i = 0; i < maze.length; i++){
+                for (int j = 0; j < maze.length; j++){
+                    if(maze[i][j] == 2){ // hinahanap yung start
+                        maze[i][j] = 0; // leave starting position
+                        maze[x1][y1] = 2; // land on next position
+                    }
+                    System.out.print(maze[i][j] + " ");
+                }
+                System.out.println();
+            }
+        } while (maze[x1][y1] != maze[x2][y2]); // loop will keep on going until the position of S is the same with G
+        System.out.println("Game done");
+        scan.close();
     }
 }
