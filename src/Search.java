@@ -42,27 +42,10 @@ public class Search {
     }
 
     public ArrayList<Position> search(){
-        //ArrayList<Position> path = new ArrayList<>();
-
         while(!unexplored.isEmpty()){
             Position current_position = unexplored.poll();
 
             if(current_position.x == current_position.y && current_position.y == goal_position.y) {
-                /*for (int i = 0; i < maze.length; i++){
-                    for (int j = 0; j < maze[i].length; j++)
-                        System.out.print(maze[i][j] + " ");
-
-                    System.out.println();
-                }
-
-                for(int i=0; i<path.size(); i++){
-                    System.out.print("(" + path.get(i).x + "," + path.get(i).y + ")");
-
-                    if(i<path.size()-1){
-                        System.out.print("->");
-                    }
-                }*/
-
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
@@ -88,10 +71,6 @@ public class Search {
             }
 
             explored.add(current_position);
-            //path.add(current_position);
-
-            /*for(Position position : path)
-                maze[current_position.y][current_position.x] = 9;*/
 
             for(Position next_position : get_next_position(current_position)) {
                 int temp_g = current_position.g + 1;
