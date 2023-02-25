@@ -49,43 +49,9 @@ public class Search {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
-                for(Position position : solution)
-                    if(maze[position.y][position.x]==0)
-                        maze[position.y][position.x] = 9;
+                print_solution(solution);
 
-                for (int i = 0; i < maze.length; i++){
-                    for (int j = 0; j < maze[i].length; j++){
-                        switch(maze[i][j]){
-                            case 0:
-                                System.out.print(". ");
-                                break;
-                            case 1:
-                                System.out.print("# ");
-                                break;
-                            case 2:
-                                System.out.print("S ");
-                                break;
-                            case 3:
-                                System.out.print("G ");
-                                break;
-                            case 9:
-                                System.out.print("* ");
-                                break;
-                        }
-                    }
-
-                    System.out.println();
-                }
-
-                for(int i=0; i<solution.size(); i++){
-                    System.out.print("(" + solution.get(i).x + "," + solution.get(i).y + ")");
-
-                    if(i<solution.size()-1){
-                        System.out.print("->");
-                    }
-                }
-
-                return get_solution(current_position);
+                return solution;
             }
 
             explored.add(current_position);
@@ -139,5 +105,43 @@ public class Search {
         }
 
         return path;
+    }
+
+    private void print_solution(ArrayList<Position> path){
+        for(Position position : path)
+            if(maze[position.y][position.x]==0)
+                maze[position.y][position.x] = 9;
+
+        for (int i = 0; i < maze.length; i++){
+            for (int j = 0; j < maze[i].length; j++){
+                switch(maze[i][j]){
+                    case 0:
+                        System.out.print(". ");
+                        break;
+                    case 1:
+                        System.out.print("# ");
+                        break;
+                    case 2:
+                        System.out.print("S ");
+                        break;
+                    case 3:
+                        System.out.print("G ");
+                        break;
+                    case 9:
+                        System.out.print("* ");
+                        break;
+                }
+            }
+
+            System.out.println();
+        }
+
+        for(int i=0; i<path.size(); i++){
+            System.out.print("(" + path.get(i).x + "," + path.get(i).y + ")");
+
+            if(i<path.size()-1){
+                System.out.print("->");
+            }
+        }
     }
 }
