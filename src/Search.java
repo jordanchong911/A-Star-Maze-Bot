@@ -104,7 +104,7 @@ public class Search {
 
             if (next_x >= 0 && next_x < maze[0].length
                     && next_y >= 0 && next_y < maze.length
-                    && maze[next_x][next_y] != 1){
+                    && maze[next_y][next_x] != 1){
                 Position next_position = new Position(next_x, next_y);
                 next_positions.add(next_position);
             }
