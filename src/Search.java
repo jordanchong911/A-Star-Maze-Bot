@@ -50,11 +50,29 @@ public class Search {
                 solution = get_solution(current_position);
 
                 for(Position position : solution)
-                    maze[position.y][position.x] = 9;
+                    if(maze[position.y][position.x]==0)
+                        maze[position.y][position.x] = 9;
 
                 for (int i = 0; i < maze.length; i++){
-                    for (int j = 0; j < maze[i].length; j++)
-                        System.out.print(maze[i][j] + " ");
+                    for (int j = 0; j < maze[i].length; j++){
+                        switch(maze[i][j]){
+                            case 0:
+                                System.out.print(". ");
+                                break;
+                            case 1:
+                                System.out.print("# ");
+                                break;
+                            case 2:
+                                System.out.print("S ");
+                                break;
+                            case 3:
+                                System.out.print("G ");
+                                break;
+                            case 9:
+                                System.out.print("* ");
+                                break;
+                        }
+                    }
 
                     System.out.println();
                 }
