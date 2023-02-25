@@ -45,7 +45,7 @@ public class Search {
         while(!unexplored.isEmpty()){
             Position current_position = unexplored.poll();
 
-            if(current_position.x == current_position.y && current_position.y == goal_position.y) {
+            if(current_position.x == goal_position.x && current_position.y == goal_position.y) {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
