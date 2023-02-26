@@ -53,11 +53,27 @@ public class Main {
         System.out.println(walls_y);
 
         int blocked = 0;
-        for (int i = 0; i < walls_x.size(); i++) {           
-            int startState = maze[walls_y.get(i)][walls_x.get(i)];
+        int startState = -1;
+        // NOTE: DO THE CHECKING PER DIRECTION
+
+        /* 
+        for (int i = 0; i < walls_x.size(); i++) {    
+            
+            if (i == 0){
+                startState = maze[walls_y.get(i)][walls_x.get(i)];
+            }
 
             if (startState == maze[walls_y.get(i)][walls_x.get(i)+1]) { // check right move
-                continue;
+
+                if (maze[walls_y.get(i)][walls_x.get(i)] == maze[walls_y.get(i)][walls_x.get(i)+1]) { // check right move
+                    blocked = 1;
+                } else if (maze[walls_y.get(i)][walls_x.get(i)] == maze[walls_y.get(i)][walls_x.get(i)-1]) { // check left  move (unnecessary)
+                    blocked = 1;
+                } else if (maze[walls_y.get(i)][walls_x.get(i)] == maze[walls_y.get(i)+1][walls_x.get(i)]) { // check down move
+                    blocked = 1;
+                } else if (maze[walls_y.get(i)][walls_x.get(i)] == maze[walls_y.get(i)-1][walls_x.get(i)]) { // check up move
+                    blocked = 1;
+                }
             }
 
             if (startState == maze[walls_y.get(i)][walls_x.get(i)-1]) { // check left  move
@@ -72,6 +88,7 @@ public class Main {
                 continue;
             }
         }
+        */
 
         Search search = new Search(maze, x1, y1, x2, y2);
         search.search();
