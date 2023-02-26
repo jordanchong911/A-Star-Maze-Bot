@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Search {
     public class Position{
@@ -47,7 +48,7 @@ public class Search {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
-                print_solution(solution);
+                print_path(solution);
 
                 return solution;
             }
@@ -68,7 +69,14 @@ public class Search {
                 }
             }
 
+            print_path(explored);
             System.out.println("(" + current_position.x + "," + current_position.y + ")");
+
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         return null;
     }
@@ -105,7 +113,7 @@ public class Search {
         return path;
     }
 
-    private void print_solution(ArrayList<Position> path){
+    private void print_path(ArrayList<Position> path){
         for(Position position : path)
             if(maze[position.y][position.x]==0)
                 maze[position.y][position.x] = 9;
