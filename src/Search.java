@@ -69,14 +69,14 @@ public class Search {
                 }
             }
 
-            print_path(explored);
+            //print_path(explored);
             System.out.println("(" + current_position.x + "," + current_position.y + ")");
 
-            try {
+            /*try {
                 TimeUnit.MILLISECONDS.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }
+            }*/
         }
         return null;
     }
