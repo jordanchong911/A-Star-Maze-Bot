@@ -19,6 +19,8 @@ public class Search {
     }
 
     public ArrayList<Position> search(){
+        int solution_maze[][] = duplicate_maze(maze);
+
         while(!unexplored.isEmpty()){
             Position current_position = unexplored.poll();
 
@@ -26,7 +28,7 @@ public class Search {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
-                print_path(solution);
+                print_path(solution, solution_maze);
 
                 return solution;
             }
@@ -34,11 +36,11 @@ public class Search {
             explored.add(current_position);
 
             for(Position next_position : get_next_position(current_position)) {
-                if(next_position.num_explored>0)
-                    break;
-
                 if (explored.contains(next_position))
                     continue;
+
+                if(next_position.num_explored>0)
+                    break;
 
                 int expected_g = current_position.g + 1;
 
@@ -51,7 +53,7 @@ public class Search {
                 }
             }
 
-            print_path(explored);
+            print_path(explored, maze);
             System.out.println("(" + current_position.x + "," + current_position.y + ")");
 
             /*try {
@@ -100,7 +102,17 @@ public class Search {
         return path;
     }
 
-    private void print_path(ArrayList<Position> path){
+    private int[][] duplicate_maze(int[][] maze){
+        int[][] maze_duplicate = new int[maze.length][maze[0].length];
+
+        for(int i=0; i<maze.length; i++)
+            for(int j=0; j<maze[0].length; j++)
+                maze_duplicate[i][j]=maze[i][j];
+
+        return maze_duplicate;
+    }
+
+    private void print_path(ArrayList<Position> path, int[][] maze){
         for(Position position : path)
             if(maze[position.y][position.x]==0)
                 maze[position.y][position.x] = 9;
