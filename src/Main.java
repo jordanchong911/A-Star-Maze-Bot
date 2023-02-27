@@ -91,9 +91,8 @@ public class Main {
         */
 
         Search search = new Search(maze, x1, y1, x2, y2);
-        search.search();
-       
-        
-        
+
+        if(search.search()==null)
+            System.out.print("No path found.");
     }
 }
