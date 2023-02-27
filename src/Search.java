@@ -2,28 +2,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Search {
-    public class Position{
-        int x;
-        int y;
-        int g;
-        int h;
-        int num_explored;
-        Position previous_position;
-
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-            this.g = 0;
-            this.h = 0;
-            this.num_explored=0;
-            this.previous_position = null;
-        }
-
-        public int get_f(){
-            return g+h;
-        }
-    }
-
     private int[][] maze;
     private Position start_position;
     private Position goal_position;
@@ -92,7 +70,7 @@ public class Search {
     private ArrayList<Position> get_next_position(Position current_position){
         ArrayList<Position> next_positions = new ArrayList<>();
         // Up, down, left, right movement
-        int[][] directions = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
+        int[][] directions = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
         for(int[] direction : directions){
             int next_x = current_position.x + direction[0];
