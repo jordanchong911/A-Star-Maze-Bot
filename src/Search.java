@@ -149,4 +149,8 @@ public class Search {
             }
         }
     }
+
+    public void finalExploredCount() {
+        System.out.println("\n\nFinal number of states explored: " + explored.size());
+    }
 }
