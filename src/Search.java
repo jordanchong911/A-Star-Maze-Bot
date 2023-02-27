@@ -28,7 +28,19 @@ public class Search {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
 
+                System.out.println("Final Path:");
+
                 print_path(solution, solution_maze);
+
+                for(int i=0; i<solution.size(); i++) {
+                    System.out.print("(" + solution.get(i).x + ", " + solution.get(i).y + ")");
+
+                    if(i<solution.size()-1)
+                        System.out.print("->");
+
+                    if(i!=0 && i%15==0)
+                        System.out.println();
+                }
 
                 return solution;
             }
@@ -54,10 +66,9 @@ public class Search {
             }
 
             print_path(explored, maze);
-            System.out.println("(" + current_position.x + "," + current_position.y + ")");
 
             /*try {
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(250);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }*/
@@ -115,7 +126,7 @@ public class Search {
     private void print_path(ArrayList<Position> path, int[][] maze){
         for(Position position : path)
             if(maze[position.y][position.x]==0)
-                maze[position.y][position.x] = 9;
+                maze[position.y][position.x] = -1;
 
         for (int i = 0; i < maze.length; i++){
             for (int j = 0; j < maze[i].length; j++){
@@ -132,7 +143,7 @@ public class Search {
                     case 3:
                         System.out.print("G ");
                         break;
-                    case 9:
+                    case -1:
                         System.out.print("* ");
                         break;
                 }
@@ -141,13 +152,7 @@ public class Search {
             System.out.println();
         }
 
-        for(int i=0; i<path.size(); i++){
-            System.out.print("(" + path.get(i).x + "," + path.get(i).y + ")");
-
-            if(i<path.size()-1){
-                System.out.print("->");
-            }
-        }
+        System.out.println();
     }
 
     public void finalExploredCount() {

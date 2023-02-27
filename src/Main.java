@@ -30,6 +30,7 @@ public class Main {
                     x2 = j;
                     y2 = i;
                 }
+
                 System.out.print(maze[i][j] + " ");
             }
 
