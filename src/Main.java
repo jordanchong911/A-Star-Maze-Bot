@@ -20,15 +20,10 @@ public class Main {
 
         int maze[][] = mazeInput.getMaze();
         int x1 = -1, x2 = -1, y1 = -1, y2 = -1;
-        ArrayList<Integer> walls_x = new ArrayList<>();
-        ArrayList<Integer> walls_y = new ArrayList<>();
 
         for (int i = 0; i < maze.length; i++){
             for (int j = 0; j < maze[i].length; j++){
-                if (maze[i][j] == 1) {
-                    walls_x.add(j);
-                    walls_y.add(i);
-                } if (maze[i][j] == 2) {
+                if (maze[i][j] == 2) {
                     x1 = j;
                     y1 = i;
                 } if (maze[i][j] == 3) {
@@ -44,13 +39,6 @@ public class Main {
         System.out.println("Start: X = " + x1 + " Y = " + y1);
         System.out.println("End: X = " + x2 + " Y = " + y2);
         System.out.println("Manhattan distance: " + (Math.abs(x1 - x2) + Math.abs(y1 - y2)) + "\n");
-
-        System.out.println();
-        System.out.println("x");
-        System.out.println(walls_x);
-        System.out.println("-----------------------");
-        System.out.println("y");
-        System.out.println(walls_y);
 
         Search search = new Search(maze, x1, y1, x2, y2);
 
