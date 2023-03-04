@@ -18,12 +18,14 @@ public class Search {
         this.explored = new ArrayList<>();
     }
 
+    // A* Search Algorithm that uses the Manhattan distance as the heuristic
     public ArrayList<Position> search(){
         int solution_maze[][] = duplicate_maze(maze);
 
         while(!unexplored.isEmpty()){
             Position current_position = unexplored.poll();
 
+            // End condition: when the goal is reached
             if(current_position.x == goal_position.x && current_position.y == goal_position.y) {
                 ArrayList<Position> solution = new ArrayList<>();
                 solution = get_solution(current_position);
@@ -42,11 +44,13 @@ public class Search {
                         System.out.println();
                 }
 
-                return solution;
+                return solution; // This returns the coordinates of each move from the
+                                 // start to the goal in order of exploration
             }
 
             explored.add(current_position);
 
+            // Check all valid moves
             for(Position next_position : get_next_position(current_position)) {
                 if (explored.contains(next_position))
                     continue;
@@ -67,11 +71,11 @@ public class Search {
 
             print_path(explored, maze);
 
-            /*try {
+            try {
                 TimeUnit.MILLISECONDS.sleep(250);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }*/
+            }
         }
         return null;
     }
@@ -85,6 +89,7 @@ public class Search {
         // Up, down, left, right movement
         int[][] directions = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
+        // Look for valid moves
         for(int[] direction : directions){
             int next_x = current_position.x + direction[0];
             int next_y = current_position.y + direction[1];
