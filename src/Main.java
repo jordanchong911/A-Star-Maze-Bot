@@ -16,7 +16,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("File not found: " + e.getMessage());
         }
-        scan.close();
+        
 
         int maze[][] = mazeInput.getMaze();
         int x1 = -1, x2 = -1, y1 = -1, y2 = -1;
@@ -47,5 +47,14 @@ public class Main {
             System.out.print("No path found.");
 
         search.finalExploredCount();
+
+        System.out.println();
+        System.out.print("Type any key to end program: ");
+        String next = scan.nextLine();
+
+        if (next != null)
+            System.out.println("The program has ended.");
+
+        scan.close();
     }
 }
