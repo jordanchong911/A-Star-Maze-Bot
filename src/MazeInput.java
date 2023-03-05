@@ -8,7 +8,7 @@ public class MazeInput {
     public void FileInput (String fileName) throws FileNotFoundException{
         //           windows: src\\
         //               mac: src/
-        File file = new File("src/" + fileName);
+        File file = new File(fileName);
         Scanner scan = new Scanner(file);
 
         int mazeSize = scan.nextInt();

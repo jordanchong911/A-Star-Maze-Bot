@@ -4,19 +4,23 @@ import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Type in the file name: ");
         Scanner scan = new Scanner(System.in);
-        String fileName = scan.nextLine();
-        fileName = fileName + ".txt";
-
+        String fileName = null;
         MazeInput mazeInput = new MazeInput();
+        boolean valid = false;
 
-        try {
-            mazeInput.FileInput(fileName);
-        } catch (Exception e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
+        while (!valid) {
+            System.out.print("Type in the file name: ");
+            fileName = scan.nextLine();
+            
+            if(fileName.equals("maze"))
+                valid = true;
+            else
+                System.out.println("Wrong input. Try again");
+        } 
         
+        fileName += ".txt";
+        mazeInput.FileInput(fileName);
 
         int maze[][] = mazeInput.getMaze();
         int x1 = -1, x2 = -1, y1 = -1, y2 = -1;
