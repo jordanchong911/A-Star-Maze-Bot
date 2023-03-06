@@ -1,14 +1,18 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Math;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         String fileName = null;
+        //System.out.print("Type in the file name: ");
+        //fileName = scan.nextLine();
         MazeInput mazeInput = new MazeInput();
         boolean valid = false;
+        
 
+        
+        // MAZE 3 TEST filename: maze.txt
         while (!valid) {
             System.out.print("Type in the file name: ");
             fileName = scan.nextLine();
@@ -18,9 +22,17 @@ public class Main {
             else
                 System.out.println("Wrong input. Try again");
         } 
-        
         fileName += ".txt";
         mazeInput.FileInput(fileName);
+        
+        /* 
+        MAZE 2 TEST
+        try {
+            mazeInput.FileInput(fileName);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        */
 
         int maze[][] = mazeInput.getMaze();
         int x1 = -1, x2 = -1, y1 = -1, y2 = -1;
